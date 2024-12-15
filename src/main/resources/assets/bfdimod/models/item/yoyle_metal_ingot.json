@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bfdimod:item/yoyle_metal_ingot"
+  }
+}
