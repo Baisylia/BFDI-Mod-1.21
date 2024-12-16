@@ -1,0 +1,22 @@
+{
+    "textures": {
+        "particle": "bfdimod:block/yoylecake_side",
+        "bottom": "bfdimod:block/yoylecake_bottom",
+        "top": "bfdimod:block/yoylecake_top",
+        "side": "bfdimod:block/yoylecake_side",
+        "inside": "bfdimod:block/yoylecake_inner"
+    },
+    "elements": [
+        {   "from": [ 9, 0, 1 ],
+            "to": [ 15, 8, 15 ],
+            "faces": {
+                "down":  { "texture": "#bottom", "cullface": "down" },
+                "up":    { "texture": "#top" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#inside" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ]
+}

@@ -1,7 +1,25 @@
 {
   "creativetab.ncpbails.bfdi_tab": "BFDI",
 
+  "effect.bfdimod.yoyle_metal_transformed": "Yoyle Metal Transformed",
+
+  "item.bfdimod.yoyleseeds": "Yoyleseeds",
   "item.bfdimod.yoyleberry": "Yoyleberry",
+  "item.bfdimod.dream_berry": "Dream Berry",
+  "item.bfdimod.yoylecake_slice": "Yoylecake Slice",
+  "item.bfdimod.regular_cake_slice": "Regular Cake Slice",
   "item.bfdimod.yellow_tomato": "Yellow Tomato",
-  "item.bfdimod.yoyle_metal_ingot": "Yoyle Metal Ingot"
+  "item.bfdimod.yoyle_metal_ingot": "Yoyle Metal Ingot",
+  "item.bfdimod.yoyle_metal_ingot": "Yoyle Metal Nugget",
+  "item.bfdimod.yoyle_metal_sword": "Yoyle Metal Sword",
+  "item.bfdimod.yoyle_metal_axe": "Yoyle Metal Axe",
+  "item.bfdimod.yoyle_metal_pickaxe": "Yoyle Metal Pickaxe",
+  "item.bfdimod.yoyle_metal_shovel": "Yoyle Metal Shovel",
+  "item.bfdimod.yoyle_metal_hoe": "Yoyle Metal Hoe",
+  "item.bfdimod.yoyle_metal_knife": "Yoyle Metal Knife",
+
+  "block.bfdimod.yoyle_metal_ingot": "Yoyleberry Bush",
+  "block.bfdimod.yoylecake": "Yoylecake",
+  "block.bfdimod.regular_cake": "Regular Cake",
+  "block.bfdimod.yoyle_metal_block": "Yoyle Metal Block"
 }

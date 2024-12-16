@@ -1,7 +1,11 @@
 package com.ncpbails.bfdimod;
 
+import com.ncpbails.bfdimod.block.ModBlocks;
+import com.ncpbails.bfdimod.effect.ModEffects;
 import com.ncpbails.bfdimod.tab.ModCreativeModeTabs;
 import com.ncpbails.bfdimod.item.ModItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -33,6 +37,8 @@ public class BFDIMod
 
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModEffects.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -66,7 +72,7 @@ public class BFDIMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.YOYLEBERRY_BUSH_BLOCK.get(), RenderType.cutoutMipped());
         }
     }
 }

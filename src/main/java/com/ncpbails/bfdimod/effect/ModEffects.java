@@ -19,6 +19,9 @@ public class ModEffects {
             () -> new YoyleMetalTransformedEffect(MobEffectCategory.NEUTRAL, 0x575756)
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED,
                             ResourceLocation.fromNamespaceAndPath(BFDIMod.MOD_ID, "yoyle_metal_transformed"), -0.25f,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+                    .addAttributeModifier(Attributes.ATTACK_DAMAGE,
+                            ResourceLocation.fromNamespaceAndPath(BFDIMod.MOD_ID, "yoyle_metal_transformed"), +0.25f,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static void register(IEventBus eventBus) {

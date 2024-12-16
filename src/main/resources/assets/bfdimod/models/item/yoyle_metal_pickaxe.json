@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "bfdimod:item/yoyle_metal_pickaxe"
+  }
+}
