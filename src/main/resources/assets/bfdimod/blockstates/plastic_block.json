@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "bfdimod:block/plastic_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "bfdimod:block/plastic_block"
+    },
+    "axis=z": {
+      "model": "bfdimod:block/plastic_block_horizontal",
+      "x": 90
+    }
+  }
+}

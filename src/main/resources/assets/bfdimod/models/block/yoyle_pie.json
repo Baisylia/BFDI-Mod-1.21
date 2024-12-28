@@ -1,0 +1,9 @@
+{
+  "parent": "farmersdelight:block/pie",
+  "textures": {
+    "particle": "bfdimod:block/yoyle_pie_top",
+    "bottom": "bfdimod:block/yoyle_pie_bottom",
+    "side": "bfdimod:block/yoyle_pie_side",
+    "top": "bfdimod:block/yoyle_pie_top"
+  }
+}

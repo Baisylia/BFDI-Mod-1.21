@@ -73,6 +73,7 @@ public class BFDIMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.YOYLEBERRY_BUSH_BLOCK.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUEBERRY_BUSH_BLOCK.get(), RenderType.cutoutMipped());
         }
     }
 }

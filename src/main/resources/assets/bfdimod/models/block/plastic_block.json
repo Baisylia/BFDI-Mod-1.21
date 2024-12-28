@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "bfdimod:block/plastic_top",
+    "side": "bfdimod:block/plastic_side"
+  }
+}

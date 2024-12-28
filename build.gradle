@@ -85,6 +85,7 @@ configurations {
 
 dependencies {
     implementation "maven.modrinth:farmers-delight:${project.farmers_delight_version}"
+    implementation "maven.modrinth:cultural-delights:${project.cultural_delights_version}"
     //implementation "maven.modrinth:jei:${project.jei_version}"
     localRuntime "maven.modrinth:appleskin:${project.appleskin_version}"
     //compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
