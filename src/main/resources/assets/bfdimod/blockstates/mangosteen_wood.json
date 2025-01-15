@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "bfdimod:block/mangosteen_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "bfdimod:block/mangosteen_wood"
+    },
+    "axis=z": {
+      "model": "bfdimod:block/mangosteen_wood_horizontal",
+      "x": 90
+    }
+  }
+}

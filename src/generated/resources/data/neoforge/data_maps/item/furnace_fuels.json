@@ -1,0 +1,34 @@
+{
+  "values": {
+    "bfdimod:latex_jungle_log": {
+      "burn_time": 50
+    },
+    "bfdimod:lime_log": {
+      "burn_time": 50
+    },
+    "bfdimod:lime_sapling": {
+      "burn_time": 50
+    },
+    "bfdimod:lime_wood": {
+      "burn_time": 50
+    },
+    "bfdimod:mangosteen_log": {
+      "burn_time": 50
+    },
+    "bfdimod:mangosteen_sapling": {
+      "burn_time": 50
+    },
+    "bfdimod:mangosteen_wood": {
+      "burn_time": 50
+    },
+    "bfdimod:rubber_log": {
+      "burn_time": 50
+    },
+    "bfdimod:rubber_sapling": {
+      "burn_time": 50
+    },
+    "bfdimod:rubber_wood": {
+      "burn_time": 50
+    }
+  }
+}

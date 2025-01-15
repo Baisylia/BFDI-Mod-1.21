@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "bfdimod:block/latex_jungle_log",
+    "side": "bfdimod:block/latex_jungle_log"
+  }
+}

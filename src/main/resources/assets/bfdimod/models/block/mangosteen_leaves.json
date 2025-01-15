@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "bfdimod:block/mangosteen_leaves"
+  }
+}

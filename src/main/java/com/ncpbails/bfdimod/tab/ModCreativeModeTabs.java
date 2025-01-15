@@ -23,10 +23,23 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.YOYLEBERRY);
                 output.accept(ModItems.DREAM_BERRY);
                 output.accept(ModItems.YELLOW_TOMATO);
+                output.accept(ModItems.NEW_YELLOW_FACE);
                 output.accept(ModItems.GRAPES);
                 output.accept(ModItems.BLUEBERRIES);
                 output.accept(ModItems.CHERRIES);
+                output.accept(ModBlocks.LIME_SAPLING);
+                output.accept(ModBlocks.LIME_LEAVES);
+                output.accept(ModBlocks.FRUITING_LIME_LEAVES);
+                output.accept(ModBlocks.LIME_LOG);
+                output.accept(ModBlocks.LIME_WOOD);
                 output.accept(ModItems.LIME);
+                output.accept(ModBlocks.MANGOSTEEN_SAPLING);
+                output.accept(ModBlocks.MANGOSTEEN_LEAVES);
+                output.accept(ModBlocks.FRUITING_MANGOSTEEN_LEAVES);
+                output.accept(ModBlocks.MANGOSTEEN_LOG);
+                output.accept(ModBlocks.MANGOSTEEN_WOOD);
+                output.accept(ModItems.MANGOSTEEN);
+                output.accept(ModItems.NEW_PURPLE_FACE);
                 output.accept(ModItems.POO);
                 output.accept(ModItems.POLISHED_POO);
 
@@ -60,6 +73,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.CEMENT_LOLLIPOP);
                 output.accept(ModItems.POO_LOLLIPOP);
 
+                output.accept(ModBlocks.LOSER_CONTESTONE);
+                output.accept(ModBlocks.POLISHED_LOSER_CONTESTONE);
+                output.accept(ModBlocks.WINNER_CONTESTONE);
+                output.accept(ModBlocks.POLISHED_WINNER_CONTESTONE);
                 output.accept(ModItems.PRICE_TAG);
                 output.accept(ModItems.COIN);
                 output.accept(ModItems.MATCH);
@@ -90,9 +107,16 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.YOYLE_METAL_HOE);
                 output.accept(ModItems.YOYLE_METAL_KNIFE);
 
+                output.accept(ModBlocks.RUBBER_SAPLING);
+                output.accept(ModBlocks.RUBBER_LEAVES);
+                output.accept(ModBlocks.RUBBER_LOG);
+                output.accept(ModBlocks.RUBBER_WOOD);
+                output.accept(ModBlocks.LATEX_JUNGLE_LOG);
+                output.accept(ModBlocks.LATEX_JUNGLE_WOOD);
+                output.accept(ModItems.LATEX_BOTTLE);
+                output.accept(ModItems.RUBBER);
                 output.accept(ModBlocks.RUBBER_BLOCK);
                 output.accept(ModBlocks.TIRE);
-                output.accept(ModItems.RUBBER);
                 output.accept(ModItems.ERASER);
                 output.accept(ModItems.PENCIL);
                 output.accept(ModItems.BALLOON);
@@ -100,6 +124,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.TENNIS_BALL);
                 output.accept(ModItems.BRACELET);
 
+                output.accept(ModBlocks.YOYLITE);
                 output.accept(ModBlocks.PLASTIC_BLOCK);
                 output.accept(ModItems.PLASTIC);
                 output.accept(ModItems.PLASTIC_STICK);

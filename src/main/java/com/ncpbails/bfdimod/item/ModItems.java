@@ -2,6 +2,7 @@ package com.ncpbails.bfdimod.item;
 
 import com.ncpbails.bfdimod.BFDIMod;
 import com.ncpbails.bfdimod.block.ModBlocks;
+import com.ncpbails.bfdimod.item.custom.LatexBottleItem;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -24,17 +25,25 @@ public class ModItems {
     public static final DeferredItem<Item> YELLOW_TOMATO = ITEMS.register("yellow_tomato", () -> new Item(new Item.Properties()
             .food(ModFoodProperties.YELLOW_TOMATO)));
 
+    public static final DeferredItem<Item> NEW_YELLOW_FACE = ITEMS.register("new_yellow_face", () -> new Item(new Item.Properties()
+            .food(ModFoodProperties.YELLOW_TOMATO)));
+
     public static final DeferredItem<Item> GRAPES = ITEMS.register("grapes", () -> new Item(new Item.Properties()
             .food(ModFoodProperties.BERRY)));
 
     public static final DeferredItem<Item> BLUEBERRIES = ITEMS.register("blueberries", () -> new ItemNameBlockItem(ModBlocks.BLUEBERRY_BUSH_BLOCK.get(),
             new Item.Properties().food(ModFoodProperties.BERRY)));
 
-
     public static final DeferredItem<Item> CHERRIES = ITEMS.register("cherries", () -> new Item(new Item.Properties()
             .food(ModFoodProperties.BERRY)));
 
     public static final DeferredItem<Item> LIME = ITEMS.register("lime", () -> new Item(new Item.Properties()
+            .food(ModFoodProperties.BERRY)));
+
+    public static final DeferredItem<Item> MANGOSTEEN = ITEMS.register("mangosteen", () -> new Item(new Item.Properties()
+            .food(ModFoodProperties.BERRY)));
+
+    public static final DeferredItem<Item> NEW_PURPLE_FACE = ITEMS.register("new_purple_face", () -> new Item(new Item.Properties()
             .food(ModFoodProperties.BERRY)));
 
     public static final DeferredItem<Item> POO = ITEMS.register("poo", () -> new Item(new Item.Properties()));
@@ -177,6 +186,8 @@ public class ModItems {
                     .attributes(HoeItem.createAttributes(ModToolTiers.YOYLE_METAL, -4.0F, 0.0f))));
 
 
+
+    public static final DeferredItem<Item> LATEX_BOTTLE = ITEMS.register("latex_bottle", () -> new LatexBottleItem(new Item.Properties()));
 
     public static final DeferredItem<Item> RUBBER = ITEMS.register("rubber", () -> new Item(new Item.Properties()));
 

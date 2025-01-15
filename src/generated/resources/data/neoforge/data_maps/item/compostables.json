@@ -1,0 +1,79 @@
+{
+  "values": {
+    "bfdimod:blueberries": {
+      "chance": 0.25
+    },
+    "bfdimod:blueberry_pie_slice": {
+      "chance": 0.45
+    },
+    "bfdimod:cherries": {
+      "chance": 0.25
+    },
+    "bfdimod:chocolate_cake": {
+      "chance": 1.0
+    },
+    "bfdimod:chocolate_cake_slice": {
+      "chance": 0.45
+    },
+    "bfdimod:donut": {
+      "chance": 0.25
+    },
+    "bfdimod:dream_berry": {
+      "chance": 0.25
+    },
+    "bfdimod:evil_leaf": {
+      "chance": 0.25
+    },
+    "bfdimod:grapes": {
+      "chance": 0.25
+    },
+    "bfdimod:leaf": {
+      "chance": 0.25
+    },
+    "bfdimod:lime": {
+      "chance": 0.25
+    },
+    "bfdimod:lime_sapling": {
+      "chance": 0.45
+    },
+    "bfdimod:mangosteen_sapling": {
+      "chance": 0.45
+    },
+    "bfdimod:polished_poo": {
+      "chance": 1.0
+    },
+    "bfdimod:poo": {
+      "chance": 1.0
+    },
+    "bfdimod:regular_cake": {
+      "chance": 1.0
+    },
+    "bfdimod:regular_cake_slice": {
+      "chance": 0.45
+    },
+    "bfdimod:rubber_sapling": {
+      "chance": 0.45
+    },
+    "bfdimod:trapped_blueberry_pie": {
+      "chance": 1.0
+    },
+    "bfdimod:yellow_tomato": {
+      "chance": 0.25
+    },
+    "bfdimod:yoyle_pie_slice": {
+      "chance": 0.45
+    },
+    "bfdimod:yoyleberry": {
+      "chance": 0.25
+    },
+    "bfdimod:yoylecake": {
+      "chance": 1.0
+    },
+    "bfdimod:yoylecake_slice": {
+      "chance": 0.45
+    },
+    "bfdimod:yoyleseeds": {
+      "chance": 0.25
+    }
+  }
+}

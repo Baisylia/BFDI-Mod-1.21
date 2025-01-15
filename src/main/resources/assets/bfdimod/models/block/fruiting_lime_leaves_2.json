@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "bfdimod:block/fruiting_lime_leaves_2"
+  }
+}
