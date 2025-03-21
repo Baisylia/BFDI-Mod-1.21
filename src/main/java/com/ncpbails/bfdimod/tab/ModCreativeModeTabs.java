@@ -168,6 +168,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.GREY_BLOCK);
                 output.accept(ModBlocks.BLACK_BLOCK);
                 output.accept(ModBlocks.BROWN_BLOCK);
+
+                output.accept(ModBlocks.STONE_TO_BOOT_O_TRON);
             }).build());
 
     public static void register(IEventBus eventBus) {

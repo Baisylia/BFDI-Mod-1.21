@@ -1,12 +1,17 @@
 package com.ncpbails.bfdimod;
 
 import com.ncpbails.bfdimod.block.ModBlocks;
+import com.ncpbails.bfdimod.block.entity.ModBlockEntities;
 import com.ncpbails.bfdimod.effect.ModEffects;
+import com.ncpbails.bfdimod.recipe.ModRecipes;
+import com.ncpbails.bfdimod.screen.ModMenuTypes;
+import com.ncpbails.bfdimod.screen.StoneToBootOTronScreen;
 import com.ncpbails.bfdimod.tab.ModCreativeModeTabs;
 import com.ncpbails.bfdimod.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -39,6 +44,8 @@ public class BFDIMod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -75,5 +82,10 @@ public class BFDIMod
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.YOYLEBERRY_BUSH_BLOCK.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUEBERRY_BUSH_BLOCK.get(), RenderType.cutoutMipped());
         }
+    }
+
+    @SubscribeEvent
+    public static void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(ModMenuTypes.STONE_TO_BOOT_O_TRON_MENU.get(), StoneToBootOTronScreen::new);
     }
 }
