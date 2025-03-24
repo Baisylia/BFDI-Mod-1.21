@@ -155,5 +155,7 @@
   "block.bfdimod.light_grey_block": "Light Grey Block",
   "block.bfdimod.grey_block": "Grey Block",
   "block.bfdimod.black_block": "Black Block",
-  "block.bfdimod.brown_block": "Brown Block"
+  "block.bfdimod.brown_block": "Brown Block",
+
+  "block.bfdimod.stone_to_boot_o_tron": "Stone-To-Boot-O-Tron"
 }

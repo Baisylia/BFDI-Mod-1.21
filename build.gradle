@@ -100,7 +100,7 @@ dependencies {
     //runtimeOnly "maven.modrinth:supplementaries:${project.supplementaries_version}"
     //implementation "maven.modrinth:jei:${project.jei_version}"
     runtimeOnly "maven.modrinth:appleskin:${project.appleskin_version}"
-    runtimeOnly("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
+    implementation("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
     //compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     //compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     //localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
