@@ -236,12 +236,6 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops().sound(SoundType.WOOD)));
 
 
-
-    public static final DeferredBlock<Block> STONE_TO_BOOT_O_TRON = registerBlock("stone_to_boot_o_tron",
-            () -> new StoneToBootOTronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().sound(SoundType.COPPER)));
-
-
-
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

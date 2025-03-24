@@ -1,5 +1,7 @@
 package com.ncpbails.bfdimod.effect;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.brigadier.ParseResults;
 import com.ncpbails.bfdimod.item.ModItems;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -37,6 +39,16 @@ public class YoyleMetalTransformedEffect extends MobEffect {
             );
             String command = "/effect give " + livingEntity.getName().getString() + " minecraft:glowing 2 1 true";
             System.out.println(command);
+            ParseResults<CommandSourceStack> parseResults = serverLevel.getServer()
+                    .getCommands()
+                    .getDispatcher()
+                    .parse(command, sourceStack);
+            if (!parseResults.getReader().canRead()) {
+                System.out.println("Error: Command parsing failed.");
+            } else {
+                System.out.println("Command parsing succeeded.");
+            }
+            serverLevel.getServer().getCommands().performCommand(parseResults, command);
             return true;
         }
         return super.applyEffectTick(livingEntity, amplifier);
@@ -47,6 +59,7 @@ public class YoyleMetalTransformedEffect extends MobEffect {
         return true;
     }
 
+    @VisibleForTesting
     protected static int numberOfItemsToSpawn() {
         Random rand = new Random();
         return rand.nextInt(4) + 1;

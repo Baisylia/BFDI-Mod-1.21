@@ -1,9 +1,0 @@
-{
-  "type": "bfdimod:stone_to_boot_o_tron",
-  "ingredient": {
-    "item": "minecraft:cobblestone"
-  },
-  "result": {
-    "id": "minecraft:diamond_boots"
-  }
-}
