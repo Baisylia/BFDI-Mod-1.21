@@ -97,27 +97,22 @@ public class StoneToBootOTronRecipeCategory implements IRecipeCategory<StoneToBo
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, StoneToBootOTronRecipe recipe, IFocusGroup focuses) {
-        int start = 3;
+        int startX = 3;
+        int startY = 3;
         int offset = 18;
-        int offset2 = offset+offset;
-        builder.addSlot(RecipeIngredientRole.INPUT, start, start).addIngredients(recipe.getIngredients().get(0));
-        if (recipe.getIngredients().size() > 1) {
-            builder.addSlot(RecipeIngredientRole.INPUT, start+offset, start).addIngredients(recipe.getIngredients().get(1));
-            if (recipe.getIngredients().size() > 2) {
-                builder.addSlot(RecipeIngredientRole.INPUT, start+offset2, start).addIngredients(recipe.getIngredients().get(2));
-                if (recipe.getIngredients().size() > 3) {
-                    builder.addSlot(RecipeIngredientRole.INPUT, start, start+offset).addIngredients(recipe.getIngredients().get(3));
-                    if (recipe.getIngredients().size() > 4) {
-                        builder.addSlot(RecipeIngredientRole.INPUT, start+offset, start+offset).addIngredients(recipe.getIngredients().get(4));
-                        if (recipe.getIngredients().size() > 5) {
-                            builder.addSlot(RecipeIngredientRole.INPUT, start+offset2, start+offset).addIngredients(recipe.getIngredients().get(5));
-                            if (recipe.getIngredients().size() > 6) {
-                                builder.addSlot(RecipeIngredientRole.INPUT, start, start+offset2).addIngredients(recipe.getIngredients().get(6));
-                                if (recipe.getIngredients().size() > 7) {
-                                    builder.addSlot(RecipeIngredientRole.INPUT, start+offset, start+offset2).addIngredients(recipe.getIngredients().get(7));
-                                    if (recipe.getIngredients().size() > 8) {
-                                        builder.addSlot(RecipeIngredientRole.INPUT, start+offset2, start+offset2).addIngredients(recipe.getIngredients().get(8));
-        }}}}}}}}
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 21).addItemStack(RecipeUtils.getResultItem(recipe));
+
+        // Loop through the ingredients and place them properly
+        for (int i = 0; i < recipe.getIngredients().size(); i++) {
+            int x = startX + (i % 3) * offset;  // Spread horizontally in columns of 3
+            int y = startY + (i / 3) * offset;  // Move to the next row every 3 items
+
+            builder.addSlot(RecipeIngredientRole.INPUT, x, y)
+                    .addItemStack(new ItemStack(recipe.getIngredients().get(i).getItems()[0].getItem(), 64));
+        }
+
+        // Set the output slot at a fixed position
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 21)
+                .addItemStack(RecipeUtils.getResultItem(recipe));
     }
+
 }

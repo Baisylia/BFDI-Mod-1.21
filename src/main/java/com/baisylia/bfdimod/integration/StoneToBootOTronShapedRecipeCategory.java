@@ -104,7 +104,7 @@ public class StoneToBootOTronShapedRecipeCategory implements IRecipeCategory<Sto
         for (int y = 0; y < recipe.getHeight(); y++) {
             for (int x = 0; x < recipe.getWidth(); x++) {
                 builder.addSlot(RecipeIngredientRole.INPUT, start + x * 18, start + y * 18)
-                        .addIngredients(recipe.getIngredients().get(index));
+                        .addItemStack(new ItemStack(recipe.getIngredients().get(index).getItems()[0].getItem(), 64));
                 index++;
             }
         }

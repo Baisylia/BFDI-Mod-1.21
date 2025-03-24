@@ -46,7 +46,7 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
     }
 
     public boolean matches(RecipeWrapper inv, Level level) {
-        ItemStack outputSlot = inv.getItem(9);
+        ItemStack outputSlot = inv.getItem(10);
         if (!outputSlot.isEmpty() && !ItemStack.isSameItem(this.output, outputSlot)) {
             return false;
         }
@@ -104,8 +104,8 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
                 Ingredient recipeIngredient = this.pattern.ingredients().get(i + j * this.getWidth());
                 ItemStack gridStack = pContainer.getItem(gridX + gridY * 3); // Use a fixed grid size of 3x3
 
-                // Check if the ingredient matches the item in the crafting grid
-                if (!recipeIngredient.test(gridStack)) {
+                // Ensure the ingredient matches and the stack size is exactly 64
+                if (!recipeIngredient.test(gridStack) || gridStack.getCount() != 64) {
                     return false;
                 }
 

@@ -43,7 +43,8 @@ public class StoneToBootOTronMenu extends AbstractContainerMenu {
         this.addSlot(new SlotItemHandler(handler, 6, 30, 53));    // Slot 6
         this.addSlot(new SlotItemHandler(handler, 7, 48, 53));    // Slot 7
         this.addSlot(new SlotItemHandler(handler, 8, 66, 53));    // Slot 8
-        this.addSlot(new ModResultSlot(handler, 9, 124, 35));  // Output slot
+        this.addSlot(new SlotItemHandler(handler, 9, 93, 53));
+        this.addSlot(new ModResultSlot(handler, 10, 124, 19));
 
         addDataSlots(data);
     }
@@ -80,7 +81,7 @@ public class StoneToBootOTronMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 10;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 11;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {

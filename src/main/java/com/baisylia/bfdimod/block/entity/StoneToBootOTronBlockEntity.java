@@ -147,24 +147,25 @@ public class StoneToBootOTronBlockEntity extends BlockEntity implements MenuProv
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, StoneToBootOTronBlockEntity pBlockEntity) {
-        pBlockEntity.recheckOpen();
-        if (isFueled(pBlockEntity, pPos, pLevel)) {
+        if(hasRecipe(pBlockEntity)) {
             pBlockEntity.litTime = 1;
-            setChanged(pLevel, pPos, pState);
-        } else {
-            pBlockEntity.litTime = 0;
-            setChanged(pLevel, pPos, pState);
-        }
-
-        if (hasRecipe(pBlockEntity)) {
             pBlockEntity.progress++;
             setChanged(pLevel, pPos, pState);
-            if (pBlockEntity.progress > pBlockEntity.maxProgress) {
+            if(pBlockEntity.progress > pBlockEntity.maxProgress) {
                 craftItem(pBlockEntity);
             }
         } else {
+            pBlockEntity.litTime = 0;
             pBlockEntity.resetProgress();
             setChanged(pLevel, pPos, pState);
+        }
+        if (pBlockEntity.progress > 0)
+        {
+            pLevel.setBlock(pPos, pState.setValue(LIT, Boolean.valueOf(true)), 3);
+        }
+        else
+        {
+            pLevel.setBlock(pPos, pState.setValue(LIT, Boolean.valueOf(false)), 3);
         }
     }
 
@@ -173,10 +174,6 @@ public class StoneToBootOTronBlockEntity extends BlockEntity implements MenuProv
         Level level = entity.level;
         BlockPos pos = entity.getBlockPos();
 
-        // Check if the STONE_TO_BOOT_O_TRON is fueled (lit)
-        if (!isFueled(entity, pos, level)) {
-            return false;
-        }
 
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
@@ -209,24 +206,6 @@ public class StoneToBootOTronBlockEntity extends BlockEntity implements MenuProv
     }
 
 
-    static boolean isFueled(StoneToBootOTronBlockEntity entity, BlockPos pos, Level level) {
-        BlockState stateBelow = level.getBlockState(pos.below());
-        if (stateBelow.hasProperty(BlockStateProperties.LIT) ? stateBelow.getValue(BlockStateProperties.LIT) : true) {
-            if (stateBelow.is(ModTags.HEAT_SOURCES) || stateBelow.is(ModTags.HEAT_CONDUCTORS)) {
-                level.setBlock(pos, entity.getBlockState().setValue(LIT, true), 3);
-                return true;
-            }
-            else {
-                level.setBlock(pos, entity.getBlockState().setValue(LIT, false), 3);
-                return false;
-            }
-        }
-        else {
-            level.setBlock(pos, entity.getBlockState().setValue(LIT, false), 3);
-            return false;
-        }
-    }
-
     private static void craftItem(StoneToBootOTronBlockEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
@@ -250,8 +229,8 @@ public class StoneToBootOTronBlockEntity extends BlockEntity implements MenuProv
                 }
             }
 
-            for (int i = 0; i < 9; ++i) {
-                entity.itemHandler.extractItem(i, 1, false);
+            for (int i = 0; i < 10; ++i) {
+                entity.itemHandler.extractItem(i, 64, false);
             }
 
             ItemStack result;
@@ -265,10 +244,10 @@ public class StoneToBootOTronBlockEntity extends BlockEntity implements MenuProv
             }
 
 
-            inventory.getItem(9).is(result.getItem());
+            inventory.getItem(10).is(result.getItem());
 
-            entity.itemHandler.setStackInSlot(9, new ItemStack(result.getItem(),
-                    entity.itemHandler.getStackInSlot(9).getCount() + entity.getTheCount(result)));
+            entity.itemHandler.setStackInSlot(10, new ItemStack(result.getItem(),
+                    entity.itemHandler.getStackInSlot(10).getCount() + entity.getTheCount(result)));
 
             entity.resetProgress();
         }

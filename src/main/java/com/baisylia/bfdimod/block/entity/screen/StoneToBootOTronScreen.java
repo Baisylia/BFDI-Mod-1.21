@@ -24,39 +24,43 @@ public class StoneToBootOTronScreen extends AbstractContainerScreen<StoneToBootO
 
         // Render progress bar if crafting
         if (menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 90, y + 35, 176, 14, menu.getScaledProgress(), 17);
+            guiGraphics.blit(TEXTURE, x + 89, y + 17, 176, 14,  menu.getScaledProgress(), 17);
         }
 
         // Render fuel bar if the STONE_TO_BOOT_O_TRON is fueled
         if (menu.isFueled()) {
-            guiGraphics.blit(TEXTURE, x + 93, y + 55, 176, 32, 17, 15);
+            guiGraphics.blit(TEXTURE, x + 94, y + 36, 176, 0, 14, 15);
         }
     }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
         this.renderBackground(guiGraphics, mouseX, mouseY);
         super.render(guiGraphics, mouseX, mouseY, delta);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
-        if (this.isHovering(93, 55, 17, 15, mouseX, mouseY)) {
-            String key = "container.bfdimod.stone_to_boot_o_tron." + (this.menu.isFueled() ? "heated" : "not_heated");
+        if (this.isHovering(x + 89, y + 17, 14, 15, mouseX, mouseY)) {
+            String key = "container.bfdimod.stone_to_boot_o_tron." + (this.menu.isFueled() ? "converting" : "not_converting");
             guiGraphics.renderTooltip(this.font, Component.translatable(key), mouseX, mouseY);
         }
     }
 
     protected void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
         // Draw the background texture
-        guiGraphics.blit(TEXTURE, (width - imageWidth) / 2, (height - imageHeight) / 2, 0, 0, imageWidth, imageHeight);
+        guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         // Check and render the crafting progress
         if (menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, (width - imageWidth) / 2 + 90, (height - imageHeight) / 2 + 35, 176, 14, menu.getScaledProgress(), 17);
+            guiGraphics.blit(TEXTURE, x + 89, y + 17, 176, 14,  menu.getScaledProgress(), 17);
         }
 
         // Check and render the STONE_TO_BOOT_O_TRON fuel status
         if (menu.isFueled()) {
-            guiGraphics.blit(TEXTURE, (width - imageWidth) / 2 + 93, (height - imageHeight) / 2 + 55, 176, 32, 17, 15);
+            guiGraphics.blit(TEXTURE, x + 94, y + 36, 176, 0, 14, 15);
         }
     }
-
 }

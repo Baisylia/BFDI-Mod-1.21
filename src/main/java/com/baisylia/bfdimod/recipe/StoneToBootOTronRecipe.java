@@ -54,12 +54,21 @@ public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
     }
 
     public boolean matches(RecipeWrapper inv, Level level) {
+        ItemStack outputSlot = inv.getItem(10);
+        if (!outputSlot.isEmpty() && !ItemStack.isSameItem(this.output, outputSlot)) {
+            return false;
+        }
+
+        if (!outputSlot.isEmpty() && outputSlot.getCount() >= outputSlot.getMaxStackSize()) {
+            return false;
+        }
+
         List<ItemStack> inputs = new ArrayList<>();
         int i = 0;
 
         for (int j = 0; j < 9; ++j) {
             ItemStack itemstack = inv.getItem(j);
-            if (!itemstack.isEmpty()) {
+            if (!itemstack.isEmpty() && itemstack.getCount() == 64) { // Ensure stack has exactly 64 items
                 ++i;
                 inputs.add(itemstack);
             }
@@ -67,6 +76,8 @@ public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
 
         return i == this.inputItems.size() && RecipeMatcher.findMatches(inputs, this.inputItems) != null;
     }
+
+
 
     public boolean canCraftInDimensions(int width, int height) {
         return width * height >= this.inputItems.size();

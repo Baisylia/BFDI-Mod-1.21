@@ -1,0 +1,17 @@
+{
+  "type": "bfdimod:stone_to_booting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:andesite"
+    }
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "id": "minecraft:diamond_leggings",
+    "count": 1
+  },
+  "cookingtime": 200
+}
