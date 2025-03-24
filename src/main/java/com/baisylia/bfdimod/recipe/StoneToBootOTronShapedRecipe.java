@@ -18,11 +18,13 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
 
     final ItemStack output;
     private final ShapedRecipePattern pattern;
+    private final Ingredient fuel;
     private final int cookTime;
 
-    public StoneToBootOTronShapedRecipe(ShapedRecipePattern pattern, ItemStack output, int cookTime) {
+    public StoneToBootOTronShapedRecipe(ShapedRecipePattern pattern, ItemStack output, int cookTime, Ingredient fuel) {
         this.output = output;
         this.pattern = pattern;
+        this.fuel = fuel;
         this.cookTime = cookTime;
     }
 
@@ -39,6 +41,10 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
     @Override
     public NonNullList<Ingredient> getIngredients() {
         return pattern.ingredients();
+    }
+
+    public Ingredient getFuel() {
+        return fuel;
     }
 
     public int getCookTime() {
@@ -62,13 +68,18 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
             for (int offsetY = 0; offsetY <= 3 - this.getHeight(); ++offsetY) {
                 if (checkIngredients(inv, offsetX, offsetY, slotUsed)) {
                     if (areOtherSlotsEmpty(inv, offsetX, offsetY)) {
-                        return true; // Match found, return true
+                        return hasRequiredFuel(inv, level); // Match found, return true
                     }
                 }
             }
         }
 
         return false; // No match found
+    }
+
+    private boolean hasRequiredFuel(RecipeWrapper inv, Level level) {
+        ItemStack fuelStack = inv.getItem(9);
+        return fuel.test(fuelStack);
     }
 
     private boolean areOtherSlotsEmpty(RecipeWrapper pContainer, int offsetX, int offsetY) {
@@ -150,9 +161,10 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
 
         public static final MapCodec<StoneToBootOTronShapedRecipe> CODEC = RecordCodecBuilder.mapCodec((recipe) -> recipe.group(
                 ShapedRecipePattern.MAP_CODEC.forGetter((p_311733_) -> p_311733_.pattern),
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter((p_311730_) -> p_311730_.output),
+                Ingredient.CODEC.optionalFieldOf("fuel", Ingredient.EMPTY).forGetter(StoneToBootOTronShapedRecipe::getFuel),
+                ItemStack.STRICT_CODEC.fieldOf("result").forGetter((r) -> r.output),
                 Codec.INT.optionalFieldOf("cookingtime", 200).forGetter(StoneToBootOTronShapedRecipe::getCookTime)
-        ).apply(recipe, StoneToBootOTronShapedRecipe::new));
+        ).apply(recipe, (shapedrecipepattern, output, cookTime, fuel) -> new StoneToBootOTronShapedRecipe(shapedrecipepattern, cookTime, fuel, output)));
 
 
         public MapCodec<StoneToBootOTronShapedRecipe> codec() {
@@ -169,7 +181,8 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
 
             ItemStack itemstack = ItemStack.STREAM_CODEC.decode(buffer);
             int cookTimeIn = buffer.readVarInt();
-            return new StoneToBootOTronShapedRecipe(shapedrecipepattern, itemstack, cookTimeIn);
+            Ingredient fuel = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            return new StoneToBootOTronShapedRecipe(shapedrecipepattern, itemstack, cookTimeIn, fuel);
         }
 
 
@@ -178,6 +191,7 @@ public class StoneToBootOTronShapedRecipe implements Recipe<RecipeWrapper> {
 
             ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
             buffer.writeVarInt(recipe.cookTime);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.fuel);
         }
     }
 }

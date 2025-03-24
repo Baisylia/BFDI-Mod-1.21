@@ -9,6 +9,9 @@
     "#",
     "#"
   ],
+  "fuel": {
+    "item": "minecraft:coal"
+  },
   "result": {
     "id": "minecraft:diamond_leggings",
     "count": 1

@@ -11,6 +11,9 @@
       "item": "minecraft:cobblestone"
     }
   ],
+  "fuel": {
+    "item": "minecraft:coal"
+  },
   "result": {
     "id": "minecraft:diamond_boots",
     "count": 1

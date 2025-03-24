@@ -51,7 +51,7 @@ public class StoneToBootOTronRecipeCategory implements IRecipeCategory<StoneToBo
     @Override
     public void draw(StoneToBootOTronRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         IDrawableAnimated arrow = getArrow(recipe);
-        arrow.draw(guiGraphics, 63, 19);
+        arrow.draw(guiGraphics, 63, 2);
         drawCookTime(recipe, guiGraphics, 45);
     }
 
@@ -111,8 +111,11 @@ public class StoneToBootOTronRecipeCategory implements IRecipeCategory<StoneToBo
         }
 
         // Set the output slot at a fixed position
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 21)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 5)
                 .addItemStack(RecipeUtils.getResultItem(recipe));
-    }
 
+        builder.addSlot(RecipeIngredientRole.INPUT, 66, 39)
+                .addItemStack(recipe.getFuel().getItems()[0]);
+
+    }
 }

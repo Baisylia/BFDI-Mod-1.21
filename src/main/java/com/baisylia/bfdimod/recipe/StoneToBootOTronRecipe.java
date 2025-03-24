@@ -22,17 +22,23 @@ import java.util.List;
 
 public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
     private final NonNullList<Ingredient> inputItems;
+    private final Ingredient fuel;
     private final ItemStack output;
     private final int cookTime;
 
-    public StoneToBootOTronRecipe(NonNullList<Ingredient> inputItems, ItemStack output, int cookTime) {
+    public StoneToBootOTronRecipe(NonNullList<Ingredient> inputItems, ItemStack output, int cookTime, Ingredient fuel) {
         this.inputItems = inputItems;
+        this.fuel = fuel;
         this.output = output;
         this.cookTime = cookTime;
     }
 
     public NonNullList<Ingredient> getIngredients() {
         return this.inputItems;
+    }
+
+    public Ingredient getFuel() {
+        return fuel;
     }
 
     public ItemStack getResultItem(HolderLookup.Provider provider) {
@@ -74,10 +80,13 @@ public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
             }
         }
 
-        return i == this.inputItems.size() && RecipeMatcher.findMatches(inputs, this.inputItems) != null;
+        return i == this.inputItems.size() && hasRequiredFuel(inv, level) && RecipeMatcher.findMatches(inputs, this.inputItems) != null;
     }
 
-
+    private boolean hasRequiredFuel(RecipeWrapper inv, Level level) {
+        ItemStack fuelStack = inv.getItem(9);
+        return fuel.test(fuelStack);
+    }
 
     public boolean canCraftInDimensions(int width, int height) {
         return width * height >= this.inputItems.size();
@@ -122,9 +131,10 @@ public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
     public static class Serializer implements RecipeSerializer<StoneToBootOTronRecipe> {
         private static final MapCodec<StoneToBootOTronRecipe> CODEC = RecordCodecBuilder.mapCodec((inst) -> inst.group(
                 Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredients").forGetter(StoneToBootOTronRecipe::getIngredients),
+                Ingredient.CODEC.optionalFieldOf("fuel", Ingredient.EMPTY).forGetter(StoneToBootOTronRecipe::getFuel),
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter((r) -> r.output),
                 Codec.INT.optionalFieldOf("cookingtime", 200).forGetter(StoneToBootOTronRecipe::getCookTime)
-        ).apply(inst, (ingredients, output, cookTime) -> new StoneToBootOTronRecipe(NonNullList.copyOf(ingredients), output, cookTime)));
+        ).apply(inst, (ingredients, output, cookTime, fuel) -> new StoneToBootOTronRecipe(NonNullList.copyOf(ingredients), cookTime, fuel, output)));
 
         public Serializer() {}
 
@@ -142,7 +152,8 @@ public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
             inputItemsIn.replaceAll((ignored) -> Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             ItemStack outputIn = ItemStack.STREAM_CODEC.decode(buffer);
             int cookTimeIn = buffer.readVarInt();
-            return new StoneToBootOTronRecipe(inputItemsIn, outputIn, cookTimeIn);
+            Ingredient fuel = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            return new StoneToBootOTronRecipe(inputItemsIn, outputIn, cookTimeIn, fuel);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, StoneToBootOTronRecipe recipe) {
@@ -152,6 +163,7 @@ public class StoneToBootOTronRecipe implements Recipe<RecipeWrapper> {
             }
             ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
             buffer.writeVarInt(recipe.cookTime);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.fuel);
         }
     }
 }
